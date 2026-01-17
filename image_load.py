@@ -1,3 +1,7 @@
+# DO NOT RUN THIS
+# This is the code to unzip all of the image files into the GitHub repository. 
+# All of the images have already been unzipped, so if you run it again, ALL OF THE IMAGES WILL BE UNZIPPED AGAIN!!
+
 import zipfile
 from PIL import Image
 
