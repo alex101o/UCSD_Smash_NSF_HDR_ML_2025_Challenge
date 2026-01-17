@@ -1,0 +1,2 @@
+# UCSD_Smash_NSF_HDR_ML_2025_Challenge
+Thingys
