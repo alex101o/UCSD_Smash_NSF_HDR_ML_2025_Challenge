@@ -1,0 +1,7 @@
+Requirements for running:
+
+1. pip install ultralytics and opencv-python, all other should be included in the environment or natively
+
+2. download SAM2 2.1 ("sam2.1_l.pt") from https://docs.ultralytics.com/models/sam-2/#how-to-use-sam-2-versatility-in-image-and-video-segmentation
+
+3. make sure the parameter file from training is also stored somewhere
