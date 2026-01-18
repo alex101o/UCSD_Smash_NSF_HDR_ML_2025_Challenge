@@ -1,14 +1,24 @@
-# DO NOT RUN THIS
-# This is the code to unzip all of the image files into the GitHub repository. 
-# All of the images have already been unzipped, so if you run it again, ALL OF THE IMAGES WILL BE UNZIPPED AGAIN!!
+from datasets import load_dataset
+from huggingface_hub import hf_hub_download
+import os
 
-import zipfile
-from PIL import Image
+repo_id = "imageomics/sentinel-beetles"  # Replace with your repo ID
+local_dir = "BeetleImages"
+os.makedirs(local_dir, exist_ok=True)
 
-zip_file_path = 'flattened_images.zip'
-extract_dir = "BeetleImages/"
-     
-with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-    zip_ref.extractall(extract_dir)
+# 1. Stream the dataset to get the file paths
+ds = load_dataset(repo_id, streaming=True, split="train")
 
-print(f"'{zip_file_path}' contents extracted to '{extract_dir}' successfully.")
+print("Starting downloads...")
+
+for row in ds:
+    file_path = row["file_path"] # The column from your screenshot
+    
+    # 2. Download each specific file
+    hf_hub_download(
+        repo_id=repo_id,
+        filename=file_path,
+        repo_type="dataset",
+        local_dir=local_dir
+    )
+    print(f"Downloaded: {file_path}")
